@@ -1,13 +1,13 @@
-<<<<<<< HEAD
+
 from fastapi import FastAPI, HTTPException
 import json
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-=======
+
 from fastapi import FastAPI
 import json
->>>>>>> d8cdefcefd3e2d00db6dfc26baaee1e4bcf279f7
+
 from ChatGptEntranceDto import ChatGptEntranceDto
 from ChatGptConexion import ChatGptConexion
 from LessonDto import HybridLesson
@@ -30,7 +30,7 @@ async def connect(entrance: ChatGptEntranceDto):
     mensaje = entrance.message
     return await conexion.conectar(mensaje)
 
-<<<<<<< HEAD
+
 # --- 2. NUEVO ENDPOINT PARA GENERAR GUIONES ---
 @app.post("/create-hybrid-lesson-plan/", response_model=HybridLesson)
 async def create_hybrid_lesson_plan(topic: str):
