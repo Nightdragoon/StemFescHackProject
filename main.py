@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+import json
 from ChatGptEntranceDto import ChatGptEntranceDto
 from ChatGptConexion import ChatGptConexion
 from HumanEntrance import HumanEntrance
@@ -22,11 +22,15 @@ async def connect(entrance: ChatGptEntranceDto):
     mensaje = entrance.message
     return await conexion.conectar(mensaje)
 
+
+
 @app.post("/human")
 async def human(entrance: HumanEntrance):
     mensaje = entrance.message
     humanAi = HumanEntrance()
     conexion = humanAi.conectar(mensaje)
+    jsonstring = json.loads(conexion)
+    root = HumanDto.from_dict(jsonstring)
 
 
 
