@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 from fastapi import FastAPI, HTTPException
 import json
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+=======
+from fastapi import FastAPI
+import json
+>>>>>>> d8cdefcefd3e2d00db6dfc26baaee1e4bcf279f7
 from ChatGptEntranceDto import ChatGptEntranceDto
 from ChatGptConexion import ChatGptConexion
 from LessonDto import HybridLesson
@@ -25,6 +30,7 @@ async def connect(entrance: ChatGptEntranceDto):
     mensaje = entrance.message
     return await conexion.conectar(mensaje)
 
+<<<<<<< HEAD
 # --- 2. NUEVO ENDPOINT PARA GENERAR GUIONES ---
 @app.post("/create-hybrid-lesson-plan/", response_model=HybridLesson)
 async def create_hybrid_lesson_plan(topic: str):
@@ -37,6 +43,17 @@ async def create_hybrid_lesson_plan(topic: str):
     Tu tarea es crear el guion para un video de 5 minutos sobre el tema: "{topic}".
     El video tiene un formato Híbrido: primero explica la teoría y luego muestra cómo aplicarla con código.
     Debes devolver tu respuesta exclusivamente en formato JSON, siguiendo esta estructura exacta:
+=======
+
+
+@app.post("/human")
+async def human(entrance: HumanEntrance):
+    mensaje = entrance.message
+    humanAi = HumanEntrance()
+    conexion = humanAi.conectar(mensaje)
+    jsonstring = json.loads(conexion)
+    root = HumanDto.from_dict(jsonstring)
+>>>>>>> d8cdefcefd3e2d00db6dfc26baaee1e4bcf279f7
 
     {{
       "title": "string",
