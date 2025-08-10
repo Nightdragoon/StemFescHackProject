@@ -59,15 +59,13 @@ Antes de ejecutar el código, debes configurar un archivo `.env` en la carpeta r
 OPENAI_API_KEY=tu_clave_openai
 HUME_API_KEY=tu_clave_hume
 REPLIT_API_KEY=tu_clave_replit
-# Variables de Entorno
-
-Para cargarlo automáticamente en Linux/macOS:
+```
+### Para cargarlo automáticamente en Linux/macOS:
 
 ```bash
 export $(cat .env | xargs)
 En Windows PowerShell:
-
-powershell
+```
 Copiar
 Editar
 $env:OPENAI_API_KEY="tu_clave_openai"
