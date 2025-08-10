@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 
 import requests
 import json
@@ -44,4 +43,4 @@ class HumanAiConexion:
 
 
        except Exception as e:
-           return NULL
+           return None
