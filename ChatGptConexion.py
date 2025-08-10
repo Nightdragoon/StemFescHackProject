@@ -1,5 +1,6 @@
 import requests
 import json
+
 class ChatGptConexion:
     async def conectar(self , entrance: str):
         try:

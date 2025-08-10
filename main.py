@@ -7,6 +7,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from fastapi import FastAPI
 import json
+import uuid
 
 from ChatGptEntranceDto import ChatGptEntranceDto
 from ChatGptConexion import ChatGptConexion
@@ -15,6 +16,30 @@ from LessonDto import HybridLesson
 from HumanAiConexion import HumanAiConexion
 from EmotionEntrance import EmotionEntrance
 from EmotionConexion import EmotionConexion
+from sqlalchemy import create_engine , String
+from sqlalchemy.orm import sessionmaker, declarative_base,Mapped, mapped_column
+from RegisterEnter import RegisterEnter
+
+
+engine = create_engine("mysql+pymysql://uynrkcc9e4pxlhr3:l3tvSPxDBQ4AWrDQZRu@bzuq0tqc5ec6ynd5spke-mysql.services.clever-cloud.com:20037/bzuq0tqc5ec6ynd5spke")
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
+Base = declarative_base()
+
+class User(Base):
+    __tablename__ = "users"  # ajusta si tu tabla se llama distinto
+
+    # uuid VARCHAR(36) PRIMARY KEY
+    uuid: Mapped[str] = mapped_column(
+        String(36),
+        primary_key=True,
+        default=lambda: str(uuid.uuid4())  # genera 'xxxxxxxx-xxxx-...'
+    )
+    usuario: Mapped[str] = mapped_column(String(150), unique=True, index=True, nullable=False)
+    contrasena: Mapped[str] = mapped_column(String(255), nullable=False)
+
+def get_session():
+    return SessionLocal()
+
 
 app = FastAPI()
 
@@ -51,6 +76,26 @@ async def get_emotion(emotion: str):
     emo = EmotionConexion()
     id = emotion
     return await emo.get_emotion(id)
+
+@app.post("/register")
+async def register(register:RegisterEnter):
+    """Crea un usuario. Lanza excepción si falla (por ejemplo, duplicado)."""
+    session = get_session()
+    try:
+        u = User(uuid=str(uuid.uuid4()), usuario=register.username, contrasena=register.password)
+        session.add(u)
+        session.commit()
+        session.refresh(u)
+        return u
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()
+
+
+
+
 
 
 
