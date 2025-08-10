@@ -61,9 +61,6 @@ On Windows PowerShell:
 ```
 Copy
 Edit
-$env:OPENAI_API_KEY="your_openai_key"
-$env:HUME_API_KEY="your_hume_key"
-$env:REPLIT_API_KEY="your_replit_key"
 Backend – Installation and Execution
 Go to the backend directory:
 bash
