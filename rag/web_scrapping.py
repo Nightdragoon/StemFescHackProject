@@ -7,10 +7,10 @@ from scipy.spatial.distance import cosine
 from sqlalchemy import create_engine, Column, Integer, String, Text, LargeBinary, TIMESTAMP, func
 from sqlalchemy.orm import sessionmaker, declarative_base
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from rag.embeddings import SentenceTransformerEmbeddings
+
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
+from rag.embeddings import SentenceTransformerEmbeddings
 # Importa scrapers tuyos
 from rag.scrape_mit import scrape_mit_ocw_courses
 from rag.scrape_github import main as github_main
