@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.jpg" width="600"/>
+  <img src="assets/banner.jpg" width="500"/>
 </p>
 ## ProfAI – Profesor con IA Emocionalmente Inteligente
 
