@@ -11,7 +11,7 @@ Sistema educativo impulsado por IA que enseña teoría y práctica en una vertic
 </p>
 
 <p align="center">
-  <img src="https://github.com/Nightdragoon/StemFescHackProject/assets/background.jpg" width="600"/>
+  <img src="[https://github.com/Nightdragoon/StemFescHackProject/assets](https://github.com/Nightdragoon/StemFescHackProject/blob/master/assets/background.png?raw=true)" width="600"/>
 </p>
 
 ---
