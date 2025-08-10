@@ -3,5 +3,4 @@ uvicorn[standard]
 SQLAlchemy
 PyMySQL
 requests
-uvicorn[standard]
 
