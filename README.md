@@ -1,7 +1,6 @@
 <div align="center">
 <h1 align="center">
-AI-powered educational system that teaches theory and practice in a specific vertical, detecting student confusion and adapting the lesson in real time.
-<br />
+ProfAI – Voice-Driven AI Professor with Emotional Intelligence<br />
 <br />
 <a href="assets/banner.jpg">
 <img src="assets/banner.jpg" alt="banner" width="600">
