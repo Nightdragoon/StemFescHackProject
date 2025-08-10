@@ -7,7 +7,7 @@ Sistema educativo impulsado por IA que enseña teoría y práctica en una vertic
 </p>
 
 <p align="right">
-  <img src="https://github.com/Nightdragoon/StemFescHackProject/assets/banner.jpg" width="600"/>
+  <img src="assets/banner.jpg" width="600"/>
 </p>
 
 <p align="center">
