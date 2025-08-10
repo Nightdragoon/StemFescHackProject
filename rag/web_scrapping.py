@@ -1,5 +1,6 @@
 import os
 import pickle
+import sys
 from datetime import datetime
 import numpy as np
 from scipy.spatial.distance import cosine
@@ -8,11 +9,20 @@ from sqlalchemy import create_engine, Column, Integer, String, Text, LargeBinary
 from sqlalchemy.orm import sessionmaker, declarative_base
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-import sys
+# Importar la clase de embeddings de OpenAI
+from langchain_openai import OpenAIEmbeddings
+
+# Importar para cargar las variables de entorno desde un archivo .env
+from dotenv import load_dotenv
+
+# Cargar las variables de entorno
+load_dotenv()
+
+# Asegurar que el path del proyecto esté disponible para importar otros módulos
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-#from rag.embeddings import SentenceTransformerEmbeddings
-# Importa scrapers tuyos
-# from rag.scrape_mit import scrape_mit_ocw_courses
+
+# Importa scrapers tuyos (descomenta los que necesites)
+from rag.scrape_mit import scrape_mit_ocw_courses
 from rag.scrape_github import main as github_main
 from rag.scrape_arxiv import scrape_arxiv_api
 from rag.scrape_docsIA import main as docsia_main
@@ -28,16 +38,17 @@ class RAGFragment(Base):
     __tablename__ = "rag_fragments"
     id = Column(Integer, primary_key=True, autoincrement=True)
     source_url = Column(String(512), nullable=True)
-    fragment_text = Column(Text, nullable=False, unique=True)  # evitar duplicados
+    fragment_text = Column(Text, nullable=False, unique=True)
     embedding = Column(LargeBinary, nullable=False)
     created_at = Column(TIMESTAMP, server_default=func.current_timestamp())
     updated_at = Column(TIMESTAMP, server_default=func.current_timestamp(), onupdate=func.current_timestamp())
 
-Base.metadata.create_all(bind=engine)  # Crear tabla si no existe
+Base.metadata.create_all(bind=engine)
 
 class AutoRAGDB:
     def __init__(self):
-        #self.embeddings = SentenceTransformerEmbeddings("paraphrase-multilingual-MiniLM-L12-v2")
+
+        self.embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
         self.session = SessionLocal()
         self.splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
 
@@ -45,7 +56,7 @@ class AutoRAGDB:
         print("🔄 Ejecutando scrapers y preparando datos para DB...")
 
         # Ejecutar scrapers
-        # mit_docs = scrape_mit_ocw_courses()
+        mit_docs = scrape_mit_ocw_courses()
         github_docs = github_main()
         arxiv_docs = scrape_arxiv_api()
         docsIA_docs = docsia_main()
@@ -54,18 +65,18 @@ class AutoRAGDB:
         all_sources = []
 
         # Agregar textos y fuente (link u origen) si existe
-        # for doc in mit_docs:
-        #     text = (doc.get("description") or "") + " " + (doc.get("title") or "")
-        #     if text.strip():
-        #         all_texts.append(text.strip())
-        #         all_sources.append(doc.get("url") or None)  # si tienes url
+        for doc in mit_docs:
+            text = (doc.get("description") or "") + " " + (doc.get("title") or "")
+            if text.strip():
+                all_texts.append(text.strip())
+                all_sources.append(doc.get("link") or None)
 
         for doc in github_docs:
             text = (doc.get("description") or "") + " " + (doc.get("readme_excerpt") or "")
             if text.strip():
                 all_texts.append(text.strip())
                 all_sources.append(doc.get("url") or None)
-
+        
         for doc in arxiv_docs:
             text = (doc.get("title") or "") + " " + (doc.get("abstract") or "")
             if text.strip():
@@ -76,14 +87,14 @@ class AutoRAGDB:
             text = doc.get("content") or doc.get("text") or ""
             if text.strip():
                 all_texts.append(text.strip())
-                all_sources.append(doc.get("source_url") or None)
+                all_sources.append(doc.get("url") or None)
+
 
         if not all_texts:
             print("⚠️ No hay texto para indexar.")
             return
 
         print(f"🔪 Dividiendo {len(all_texts)} documentos en fragmentos...")
-        # Generar fragmentos con fuente repetida (por simplicidad)
         all_chunks = []
         all_chunk_sources = []
 
@@ -92,22 +103,20 @@ class AutoRAGDB:
             all_chunks.extend(chunks)
             all_chunk_sources.extend([src] * len(chunks))
 
-        print(f"📚 Generando embeddings para {len(all_chunks)} fragmentos...")
+        print(f"📚 Generando embeddings para {len(all_chunks)} fragmentos con la API...")
 
         # Insertar o actualizar en la base de datos
         for chunk, source_url in zip(all_chunks, all_chunk_sources):
+            # La llamada a la API está aquí
             embedding_vector = self.embeddings.embed_documents([chunk])[0]
-            embedding_bytes = pickle.dumps(embedding_vector)  # Serializar embedding
+            embedding_bytes = pickle.dumps(embedding_vector)
 
-            # Ver si ya existe fragmento idéntico
             existing = self.session.query(RAGFragment).filter_by(fragment_text=chunk).first()
             if existing:
-                # Actualizar embedding y updated_at
                 existing.embedding = embedding_bytes
                 existing.updated_at = datetime.now()
                 print(f"♻️ Actualizado fragmento existente")
             else:
-                # Crear nuevo registro
                 new_fragment = RAGFragment(
                     source_url=source_url,
                     fragment_text=chunk,
@@ -127,6 +136,7 @@ class AutoRAGDB:
         print(f"🔎 Buscando fragmentos para la consulta: '{query}'")
 
         # 1. Generar el embedding para la consulta
+        # Esta llamada también usa la API de OpenAI
         query_embedding_vector = self.embeddings.embed_documents([query])[0]
         query_embedding_np = np.array(query_embedding_vector)
 
@@ -152,7 +162,6 @@ class AutoRAGDB:
 
     def close(self):
         self.session.close()
-
 
 if __name__ == "__main__":
     rag_db = AutoRAGDB()
