@@ -7,15 +7,15 @@ from scipy.spatial.distance import cosine
 from sqlalchemy import create_engine, Column, Integer, String, Text, LargeBinary, TIMESTAMP, func
 from sqlalchemy.orm import sessionmaker, declarative_base
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from embeddings import SentenceTransformerEmbeddings
+from rag.embeddings import SentenceTransformerEmbeddings
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Importa scrapers tuyos
 from rag.scrape_mit import scrape_mit_ocw_courses
-# from rag.scrape_github import main as github_main
-# from rag.scrape_arxiv import scrape_arxiv_api
-# from rag.scrape_docsIA import main as docsia_main
+from rag.scrape_github import main as github_main
+from rag.scrape_arxiv import scrape_arxiv_api
+from rag.scrape_docsIA import main as docsia_main
 
 # Configuración DB
 DATABASE_URL = "mysql+pymysql://uynrkcc9e4pxlhr3:l3tvSPxDBQ4AWrDQZRu@bzuq0tqc5ec6ynd5spke-mysql.services.clever-cloud.com:20037/bzuq0tqc5ec6ynd5spke"
@@ -46,9 +46,9 @@ class AutoRAGDB:
 
         # Ejecutar scrapers
         mit_docs = scrape_mit_ocw_courses()
-        github_docs = [] # github_main()
-        arxiv_docs = [] # scrape_arxiv_api()
-        docsIA_docs = [] # docsia_main()
+        github_docs = github_main()
+        arxiv_docs = scrape_arxiv_api()
+        docsIA_docs = docsia_main()
 
         all_texts = []
         all_sources = []

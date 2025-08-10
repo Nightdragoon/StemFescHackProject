@@ -17,4 +17,3 @@ mistralai
 beautifulsoup4
 selenium
 python-dotenv
-embeddings
