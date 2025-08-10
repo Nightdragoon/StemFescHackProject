@@ -10,7 +10,11 @@ import json
 
 from ChatGptEntranceDto import ChatGptEntranceDto
 from ChatGptConexion import ChatGptConexion
+from HumanEntrance import HumanEntrance
 from LessonDto import HybridLesson
+from HumanAiConexion import HumanAiConexion
+from EmotionEntrance import EmotionEntrance
+from EmotionConexion import EmotionConexion
 
 app = FastAPI()
 
@@ -29,6 +33,29 @@ async def connect(entrance: ChatGptEntranceDto):
     conexion = ChatGptConexion()
     mensaje = entrance.message
     return await conexion.conectar(mensaje)
+@app.post("/human")
+async def human(entrance: HumanEntrance):
+    mensaje = entrance.message
+    humanAi = HumanAiConexion()
+    return await humanAi.conectar(mensaje)
+
+@app.post("/emotion")
+async def emotion(entrance: EmotionEntrance):
+    message = entrance.message
+    emotion = EmotionConexion()
+    return await emotion.conectar(message)
+
+
+@app.get("/getEmotion/{emotion}")
+async def get_emotion(emotion: str):
+    emo = EmotionConexion()
+    id = emotion
+    return await emo.get_emotion(id)
+
+
+
+
+
 
 
 # --- 2. NUEVO ENDPOINT PARA GENERAR GUIONES ---
