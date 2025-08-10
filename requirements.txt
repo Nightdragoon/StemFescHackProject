@@ -6,10 +6,11 @@ uvicorn[standard]
 SQLAlchemy
 PyMySQL
 
-# Dependencias para el proceso de RAG (Retrieval-Augmented Generation)
+# Dependencias para el proceso de RAG
 langchain
 numpy
 scipy
-
-# Utilidades comunes (posibles dependencias de otros scripts)
-requests
+mistralai
+beautifulsoup4  # Para bs4
+selenium
+python-dotenv   # Para dotenv
