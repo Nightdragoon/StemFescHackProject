@@ -12,7 +12,7 @@ class ChatGptConexion:
             })
             headers = {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer api_key',
+                'Authorization': 'Bearer k-proj-QAKokl7JaZ14ERF3o_3jJQj4MXQ-cBxOiFb1cvxySCf8Wjrc7S5YpEILOsjFShHfM416nPzC60T3BlbkFJp1R3LxwcsCATckMV5KZ1OZQjw8RPBGwDvUM8BptxZgVdRNZq-pjTuXPfnUclzYhXmVWtBENQEA',
                 'Cookie': '__cf_bm=wadOHC75oTyb81.B78qNehjpknMeyKxMTZP6LBPERNA-1754759962-1.0.1.1-hJW6Yv9893sVtqn0clE0D9.QEDSlQF.vMAu0JvaDq5otMYRlT6qC1AKeyqr3AaSdcOlaIc3qSJ4Z6WClRyxki_Ysexue7BikPX4BTWbqkaY; _cfuvid=5Hdx4I96ICuPq1zSeUpso6U0P35QvRRBHCe2IcDahbs-1754759962062-0.0.1.1-604800000'
             }
 
