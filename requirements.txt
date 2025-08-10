@@ -5,12 +5,15 @@ uvicorn[standard]
 # Dependencias para la conexión a la base de datos
 SQLAlchemy
 PyMySQL
+pandas # Se usa en scrape_github.py
 
 # Dependencias para el proceso de RAG
 langchain
+langchain_core
+sentence-transformers
 numpy
 scipy
 mistralai
-beautifulsoup4  # Para bs4
+beautifulsoup4
 selenium
-python-dotenv   # Para dotenv
+python-dotenv
