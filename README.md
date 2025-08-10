@@ -2,16 +2,16 @@
 
 Sistema educativo impulsado por IA que enseña teoría y práctica en una vertical específica, detectando la confusión del alumno y adaptando la lección en tiempo real.  
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/ejemplo_profai_1" width="400"/>
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/logo" width="400"/>
+</p>
+
+<p align="right">
+  <img src="https://github.com/user-attachments/assets/banner" width="600"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ejemplo_profai_2" width="600"/>
-</p>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/ejemplo_profai_3" width="600"/>
+  <img src="https://github.com/user-attachments/assets/background" width="600"/>
 </p>
 
 ---
