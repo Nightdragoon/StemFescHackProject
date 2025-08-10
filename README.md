@@ -51,7 +51,7 @@ Before running the code, you must set up a `.env` file in the root folder with y
 ```env
 OPENAI_API_KEY=your_openai_key
 HUME_API_KEY=your_hume_key
-REPLIT_API_KEY=your_replit_key
+MISTRAL_API_KEY=your_replit_key
 ```
 ### To load it automatically on Linux/macOS:
 
