@@ -3,7 +3,7 @@
 ProfAI – Voice-Driven AI Professor with Emotional Intelligence<br />
 <br />
 <a href="assets/banner.jpg">
-<img src="assets/banner.jpg" alt="banner" width="600">
+<img src="assets/banner.jpg" alt="banner" width="500">
 </a>
 </h1>
 </div>
