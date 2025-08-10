@@ -1,4 +1,5 @@
 # Dependencias para la aplicación principal
+# sentence-transformers
 fastapi
 uvicorn[standard]
 SQLAlchemy
@@ -6,7 +7,6 @@ PyMySQL
 pandas
 langchain
 langchain_core
-sentence-transformers
 numpy
 scipy
 mistralai

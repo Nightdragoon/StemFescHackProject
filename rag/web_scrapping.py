@@ -10,7 +10,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from rag.embeddings import SentenceTransformerEmbeddings
+#from rag.embeddings import SentenceTransformerEmbeddings
 # Importa scrapers tuyos
 # from rag.scrape_mit import scrape_mit_ocw_courses
 from rag.scrape_github import main as github_main
@@ -37,7 +37,7 @@ Base.metadata.create_all(bind=engine)  # Crear tabla si no existe
 
 class AutoRAGDB:
     def __init__(self):
-        self.embeddings = SentenceTransformerEmbeddings("paraphrase-multilingual-MiniLM-L12-v2")
+        #self.embeddings = SentenceTransformerEmbeddings("paraphrase-multilingual-MiniLM-L12-v2")
         self.session = SessionLocal()
         self.splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
 
