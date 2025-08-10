@@ -24,7 +24,7 @@ from RegisterEnter import RegisterEnter
 engine = create_engine("mysql+pymysql://uynrkcc9e4pxlhr3:l3tvSPxDBQ4AWrDQZRu@bzuq0tqc5ec6ynd5spke-mysql.services.clever-cloud.com:20037/bzuq0tqc5ec6ynd5spke")
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 Base = declarative_base()
-
+#no fue pa tando
 class User(Base):
     __tablename__ = "users"  # ajusta si tu tabla se llama distinto
 
