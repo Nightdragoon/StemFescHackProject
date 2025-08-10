@@ -12,7 +12,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from rag.embeddings import SentenceTransformerEmbeddings
 # Importa scrapers tuyos
-from rag.scrape_mit import scrape_mit_ocw_courses
+# from rag.scrape_mit import scrape_mit_ocw_courses
 from rag.scrape_github import main as github_main
 from rag.scrape_arxiv import scrape_arxiv_api
 from rag.scrape_docsIA import main as docsia_main
@@ -45,7 +45,7 @@ class AutoRAGDB:
         print("🔄 Ejecutando scrapers y preparando datos para DB...")
 
         # Ejecutar scrapers
-        mit_docs = scrape_mit_ocw_courses()
+        # mit_docs = scrape_mit_ocw_courses()
         github_docs = github_main()
         arxiv_docs = scrape_arxiv_api()
         docsIA_docs = docsia_main()
@@ -54,11 +54,11 @@ class AutoRAGDB:
         all_sources = []
 
         # Agregar textos y fuente (link u origen) si existe
-        for doc in mit_docs:
-            text = (doc.get("description") or "") + " " + (doc.get("title") or "")
-            if text.strip():
-                all_texts.append(text.strip())
-                all_sources.append(doc.get("url") or None)  # si tienes url
+        # for doc in mit_docs:
+        #     text = (doc.get("description") or "") + " " + (doc.get("title") or "")
+        #     if text.strip():
+        #         all_texts.append(text.strip())
+        #         all_sources.append(doc.get("url") or None)  # si tienes url
 
         for doc in github_docs:
             text = (doc.get("description") or "") + " " + (doc.get("readme_excerpt") or "")

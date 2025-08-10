@@ -12,3 +12,4 @@ scipy
 mistralai
 requests
 python-dotenv
+beautifulsoup4
