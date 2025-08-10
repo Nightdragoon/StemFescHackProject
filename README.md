@@ -1,17 +1,18 @@
-# ProfAI – Profesor con IA Emocionalmente Inteligente
-
-Sistema educativo impulsado por IA que enseña teoría y práctica en una vertical específica, detectando la confusión del alumno y adaptando la lección en tiempo real.  
-
 <p align="left">
-  <img src="https://github.com/Nightdragoon/StemFescHackProject/assets/logo.jpg" width="400"/>
+  <img src="assets/logo.jpg" width="400"/>
 </p>
 
 <p align="right">
   <img src="assets/banner.jpg" width="600"/>
 </p>
+# ProfAI – Profesor con IA Emocionalmente Inteligente
+
+Sistema educativo impulsado por IA que enseña teoría y práctica en una vertical específica, detectando la confusión del alumno y adaptando la lección en tiempo real.  
+
+
 
 <p align="center">
-  <img src="[https://github.com/Nightdragoon/StemFescHackProject/assets](https://github.com/Nightdragoon/StemFescHackProject/blob/master/assets/background.png?raw=true)" width="600"/>
+  <img src="assets/background.png" width="600"/>
 </p>
 
 ---
