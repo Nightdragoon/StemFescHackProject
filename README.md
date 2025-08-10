@@ -31,7 +31,7 @@ The system is organized into **4 main modules**:
 1. **Content Generation (The Brain 🧠)** – Create explanations, examples, quizzes, and scripts.
 2. **Content Delivery (The Face and Voice 🗣️)** – Present the content in the chosen format (text, audio, or video with an avatar).
 3. **Emotion Detection (The Heart ❤️)** – Analyzes the student's emotional state to adapt the lesson.
-4. **Practice and Feedback (The Hands 👐)** – Allows the student to practice code or exercises with immediate feedback.
+4. **Practice and Feedback (The Hands 👐)** – Allows the student to study through audio on AI topics.
 
 ---
 
