@@ -100,7 +100,7 @@ async def create_hybrid_lesson_plan(topic: str):
     """
     try:
         # 1. Conectamos a la base de datos RAG
-        rag_db = web_scrapping()
+        rag_db = web_scrapping.AutoRAGDB()
         
         # 2. Buscamos fragmentos de texto relevantes
         relevant_fragments = rag_db.search_fragments_by_query(topic, top_k=5)
