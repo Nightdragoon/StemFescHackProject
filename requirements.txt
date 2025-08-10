@@ -1,19 +1,14 @@
-# Dependencias para la aplicación FastAPI y el servidor
+# Dependencias para la aplicación principal
 fastapi
 uvicorn[standard]
-
-# Dependencias para la conexión a la base de datos
 SQLAlchemy
 PyMySQL
-pandas # Se usa en scrape_github.py
-
-# Dependencias para el proceso de RAG
+pandas
 langchain
 langchain_core
 sentence-transformers
 numpy
 scipy
 mistralai
-beautifulsoup4
-selenium
+requests
 python-dotenv
