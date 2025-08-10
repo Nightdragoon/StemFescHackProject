@@ -1,6 +1,15 @@
+# Dependencias para la aplicación FastAPI y el servidor
 fastapi
 uvicorn[standard]
+
+# Dependencias para la conexión a la base de datos
 SQLAlchemy
 PyMySQL
-requests
 
+# Dependencias para el proceso de RAG (Retrieval-Augmented Generation)
+langchain
+numpy
+scipy
+
+# Utilidades comunes (posibles dependencias de otros scripts)
+requests
