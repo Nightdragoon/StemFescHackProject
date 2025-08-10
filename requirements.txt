@@ -1,6 +1,6 @@
-fastapi>=0.112
-uvicorn[standard]>=0.27
-SQLAlchemy>=2.0
-PyMySQL>=1.1
-requests>=2.32
-gunicorn>=21.2
+fastapi
+uvicorn[standard]
+SQLAlchemy
+PyMySQL
+requests
+gunicorn
