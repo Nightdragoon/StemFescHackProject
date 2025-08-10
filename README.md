@@ -13,135 +13,135 @@ ProfAI – Voice-Driven AI Professor with Emotional Intelligence<br />
 ### Demo
 https://youtu.be/demo_profai
 
-### Presentación Técnica
+### Technical Presentation
 https://youtu.be/presentacion_profai
 
 ---
 
-## Descripción
+## Description
 
-**ProfAI** es un profesor virtual con inteligencia emocional que enseña teoría y/o herramientas de Inteligencia Artificial, con la capacidad de:
+**ProfAI** is a virtual teacher with emotional intelligence that teaches Artificial Intelligence theory and/or tools, with the ability to:
 
-- **Detectar confusión o frustración** en el alumno.
-- Adaptar la explicación y el nivel de detalle en tiempo real.
-- Proporcionar ejercicios prácticos con **feedback instantáneo**.
-- Presentar contenido en múltiples formatos: video, audio, diapositivas o texto.
+- **Detect confusion or frustration** in the student.
+- Adapt the explanation and level of detail in real time.
+- Provide practical exercises with **instant feedback**.
+- Present content in multiple formats: video, audio, slides, or text.
 
-El sistema se organiza en **4 módulos principales**:
-1. **Generación de Contenido (El Cerebro 🧠)** – Crea explicaciones, ejemplos, cuestionarios y guiones.
-2. **Entrega de Contenido (La Cara y la Voz 🗣️)** – Presenta el contenido en el formato elegido (texto, audio o video con avatar).
-3. **Detección de Emociones (El Corazón ❤️)** – Analiza el estado emocional del alumno para adaptar la clase.
-4. **Práctica y Feedback (Las Manos 👐)** – Permite al alumno practicar código o ejercicios con retroalimentación inmediata.
+The system is organized into **4 main modules**:
+1. **Content Generation (The Brain 🧠)** – Create explanations, examples, quizzes, and scripts.
+2. **Content Delivery (The Face and Voice 🗣️)** – Present the content in the chosen format (text, audio, or video with an avatar).
+3. **Emotion Detection (The Heart ❤️)** – Analyzes the student's emotional state to adapt the lesson.
+4. **Practice and Feedback (The Hands 👐)** – Allows the student to practice code or exercises with immediate feedback.
 
 ---
 
 ## Setup
 
-### Prerrequisitos
-- Python 3.10 o superior
-- pip (gestor de paquetes de Python)
-- Virtual environment (recomendado)
+### Prerequisites
+- Python 3.10 or higher
+- pip (Python package manager)
+- Virtual environment (recommended)
 
 ---
 
-### Variables de Entorno
+### Environment Variables
 
-Antes de ejecutar el código, debes configurar un archivo `.env` en la carpeta raíz con tus claves de API:
+Before running the code, you must set up a `.env` file in the root folder with your API keys:
 
 ```env
-OPENAI_API_KEY=tu_clave_openai
-HUME_API_KEY=tu_clave_hume
-REPLIT_API_KEY=tu_clave_replit
+OPENAI_API_KEY=your_openai_key
+HUME_API_KEY=your_hume_key
+REPLIT_API_KEY=your_replit_key
 ```
-### Para cargarlo automáticamente en Linux/macOS:
+### To load it automatically on Linux/macOS:
 
 ```bash
 export $(cat .env | xargs)
-En Windows PowerShell:
+On Windows PowerShell:
 ```
-Copiar
-Editar
-$env:OPENAI_API_KEY="tu_clave_openai"
-$env:HUME_API_KEY="tu_clave_hume"
-$env:REPLIT_API_KEY="tu_clave_replit"
-Backend – Instalación y Ejecución
-Ir al directorio del backend:
+Copy
+Edit
+$env:OPENAI_API_KEY="your_openai_key"
+$env:HUME_API_KEY="your_hume_key"
+$env:REPLIT_API_KEY="your_replit_key"
+Backend – Installation and Execution
+Go to the backend directory:
 bash
-Copiar
-Editar
+Copy
+Edit
 cd backend
-Crear y activar un entorno virtual:
+Create and activate a virtual environment:
 bash
-Copiar
-Editar
+Copy
+Edit
 python -m venv .venv
-# Activar en Linux/macOS
+# Activate on Linux/macOS
 source .venv/bin/activate
-# Activar en Windows
+# Activate on Windows
 .venv\Scripts\activate
-Instalar dependencias:
+Install dependencies:
 bash
-Copiar
-Editar
+Copy
+Edit
 pip install -r requirements.txt
-Iniciar el servidor:
+Start the server:
 bash
-Copiar
-Editar
+Copy
+Edit
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-📍 El backend estará en: http://localhost:8000
-📍 Documentación de API: http://localhost:8000/docs
+📍 The backend will be located at: http://localhost:8000
+📍 API documentation: http://localhost:8000/docs
 
-Frontend – Instalación y Ejecución
-Ir al directorio del frontend:
+Frontend – Installation and Running
+Go to the frontend directory:
 bash
-Copiar
-Editar
+Copy
+Edit
 cd frontend
-Crear y activar un entorno virtual:
+Create and activate a virtual environment:
 bash
-Copiar
-Editar
+Copy
+Edit
 python -m venv .venv
-source .venv/bin/activate  # Linux/macOS
-.venv\Scripts\activate     # Windows
-Instalar dependencias:
+source .venv/bin/activate # Linux/macOS
+.venv\Scripts\activate # Windows
+Install dependencies:
 bash
-Copiar
-Editar
+Copy
+Edit
 pip install -r requirements.txt
-Ejecutar la aplicación:
+Run the application:
 bash
-Copiar
-Editar
+Copy
+Edit
 streamlit run app.py
-📍 El frontend estará en: http://localhost:8501
+📍 The frontend will be located at: http://localhost:8501
 
-Probando la Aplicación
-Asegúrate de que backend y frontend están corriendo.
+Testing the Application
+Make sure the backend and frontend are running.
 
-Selecciona el formato de lección (video, texto, audio).
+Select the lesson format (video, text, audio).
 
-Comienza una sesión y responde preguntas.
+Start a session and answer questions.
 
-Observa cómo ProfAI adapta las explicaciones según tu interacción.
+Watch how ProfAI adapts explanations based on your interaction.
 
-Realiza ejercicios prácticos y recibe retroalimentación automática.
+Do practical exercises and receive automatic feedback.
 
-Endpoints Principales
-POST /api/v1/generate-content/ – Generar material educativo.
+Main Endpoints
+POST /api/v1/generate-content/ – Generate educational material.
 
-POST /api/v1/emotion-detection/ – Analizar estado emocional del alumno.
+POST /api/v1/emotion-detection/ – Analyze the student's emotional state.
 
-POST /api/v1/practice-feedback/ – Evaluar código y dar feedback.
+POST /api/v1/practice-feedback/ – Evaluate code and provide feedback.
 
-GET /api/v1/session/{id} – Obtener estado de una sesión de aprendizaje.
+GET /api/v1/session/{id} – Get the status of a learning session.
 
 Troubleshooting
-Verifica que .env tiene las claves correctas y sin espacios extras.
+Verify that .env has the correct keys and no extra spaces.
 
-Confirma que las librerías están instaladas en el entorno virtual.
+Confirm that the libraries are installed in the virtual environment.
 
-Si usas Windows, ejecuta siempre desde PowerShell o CMD con permisos.
+If using Windows, always run from PowerShell or CMD with permissions.
 
-Reinicia el backend si cambiaste variables de entorno.
+Restart the backend if you changed environment variables.
