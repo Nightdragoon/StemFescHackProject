@@ -1,11 +1,7 @@
-<p align="left">
-  <img src="assets/logo.jpg" width="400"/>
-</p>
-
-<p align="right">
+<p align="center">
   <img src="assets/banner.jpg" width="600"/>
 </p>
-# ProfAI – Profesor con IA Emocionalmente Inteligente
+## ProfAI – Profesor con IA Emocionalmente Inteligente
 
 Sistema educativo impulsado por IA que enseña teoría y práctica en una vertical específica, detectando la confusión del alumno y adaptando la lección en tiempo real.  
 
