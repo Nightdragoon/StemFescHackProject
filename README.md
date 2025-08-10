@@ -11,10 +11,10 @@ ProfAI – Voice-Driven AI Professor with Emotional Intelligence<br />
 
 ## Videos
 ### Demo
-https://youtu.be/demo_profai
+[https://youtu.be/demo_profai](https://youtu.be/3uC3LibJ3Lo)
 
 ### Technical Presentation
-https://youtu.be/presentacion_profai
+[https://youtu.be/presentacion_profai](https://youtu.be/VhRgKG7KJpg)
 
 ---
 
