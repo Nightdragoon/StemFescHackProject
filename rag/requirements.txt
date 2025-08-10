@@ -1,9 +1,0 @@
-# Dependencias para el servidor web
-fastapi
-uvicorn[standard]
-
-# Dependencias para el scraping y utilidades
-selenium
-beautifulsoup4
-requests
-python-dotenv
